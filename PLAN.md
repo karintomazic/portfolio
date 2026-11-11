@@ -10,9 +10,10 @@ How I work on it: I run every command myself, commit after every step, and push 
 ---
 
 ## Phase 1: Setup (days 1–2)
+
 - [x] Create the Astro project (`npm create astro@latest portfolio`)
 - [x] Add integrations: Tailwind, React, sitemap (`npx astro add ...`)
-- [ ] `git init` + first commit
+- [x] `git init` + first commit
 - [ ] Create a public GitHub repo and push
 - [ ] Prettier + ESLint (incl. `eslint-plugin-jsx-a11y` and `eslint-plugin-astro`)
 - [ ] Clean out the starter files (Welcome component, demo assets)
@@ -20,9 +21,11 @@ How I work on it: I run every command myself, commit after every step, and push 
 ✅ Checkpoint: site runs locally (`npm run dev`), first commit on GitHub.
 
 ## Phase 2: Content and design (days 3–7)
+
 Write the text first, then design around it.
 
 **Content**
+
 - [ ] Hero: one sentence on who I am and what I do
 - [ ] About: environmental engineering → WordPress → Drupal → React/TypeScript → AI-first workflow
 - [ ] Case study: tattoobyjs
@@ -34,6 +37,7 @@ Write the text first, then design around it.
 Each case study: problem / what it is · my role and stack · 2–3 key decisions · how I used AI and checked the output · testing and accessibility · screenshots + live and GitHub links.
 
 **Design**
+
 - [ ] Moodboard: collect 5–10 portfolios/sites I like and note why
 - [ ] Pick fonts (max 2) and a type scale
 - [ ] Color palette with light and dark mode, all text pairs passing WCAG AA contrast (4.5:1)
@@ -44,6 +48,7 @@ Each case study: problem / what it is · my role and stack · 2–3 key decision
 ✅ Checkpoint: all text in Markdown files, design tokens defined, wireframes done.
 
 ## Phase 3: Build the pages (week 2)
+
 - [ ] Base layout: header, footer, **skip-to-content link**, landmarks (`header`, `nav`, `main`, `footer`)
 - [ ] Home: hero, short intro, featured projects, tech stack
 - [ ] Projects: list + one page per project via **Astro content collections**
@@ -55,6 +60,7 @@ Each case study: problem / what it is · my role and stack · 2–3 key decision
 - [ ] React island: project filter by tech (keyboard friendly, announces results to screen readers)
 
 **Accessibility while building**
+
 - [ ] Semantic HTML first, ARIA only when needed
 - [ ] Visible focus styles on everything interactive
 - [ ] Logical heading order (one `h1` per page)
@@ -65,6 +71,7 @@ Each case study: problem / what it is · my role and stack · 2–3 key decision
 ✅ Checkpoint: all pages work on desktop and mobile, fully usable with keyboard only.
 
 ## Phase 4: Quality = proof (week 3)
+
 - [ ] Storybook for the React components (+ `@storybook/addon-a11y`)
 - [ ] Vitest + React Testing Library tests for the islands
 - [ ] Playwright smoke tests: pages load, navigation, filter, dark mode
@@ -78,6 +85,7 @@ Each case study: problem / what it is · my role and stack · 2–3 key decision
 ✅ Checkpoint: green CI badge, Lighthouse 95+, zero axe violations.
 
 ## Phase 5: Go live (week 4)
+
 - [ ] Find out the Hetzner setup: Cloud server (VPS) or Webhosting?
 - [ ] `npm run build` → static files in `dist/`
 - [ ] Serve the site (Caddy/nginx on a VPS, or upload to webhosting)
@@ -87,6 +95,7 @@ Each case study: problem / what it is · my role and stack · 2–3 key decision
 ✅ Checkpoint: karintomazic.com live with HTTPS.
 
 ## After launch
+
 - [ ] December: publish the iobi case study when it's live
 - [ ] LinkedIn to-do list (Featured, Projects, banner with URL, education + Udemy certificates, first post)
 - [ ] Optional: small NestJS API project + case study

@@ -8,10 +8,10 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://karintomazic.com',
-  
+
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
   },
 
-  integrations: [react(), sitemap()]
+  integrations: [react(), sitemap()],
 });
