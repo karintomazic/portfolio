@@ -14,8 +14,8 @@ How I work on it: I run every command myself, commit after every step, and push 
 - [x] Create the Astro project (`npm create astro@latest portfolio`)
 - [x] Add integrations: Tailwind, React, sitemap (`npx astro add ...`)
 - [x] `git init` + first commit
-- [ ] Create a public GitHub repo and push
-- [ ] Prettier + ESLint (incl. `eslint-plugin-jsx-a11y` and `eslint-plugin-astro`)
+- [x] Create a public GitHub repo and push
+- [x] Prettier + ESLint (incl. `eslint-plugin-jsx-a11y` and `eslint-plugin-astro`)
 - [ ] Clean out the starter files (Welcome component, demo assets)
 
 ✅ Checkpoint: site runs locally (`npm run dev`), first commit on GitHub.
