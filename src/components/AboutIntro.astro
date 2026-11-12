@@ -1,0 +1,32 @@
+---
+import SectionHeading from './SectionHeading.astro';
+---
+
+<section
+  aria-labelledby="about-heading"
+  class="mx-auto max-w-6xl px-4 py-20 md:py-28"
+>
+  <div class="grid gap-10 md:grid-cols-2 md:gap-16">
+    <SectionHeading
+      id="about-heading"
+      eyebrow="About me"
+      title="Seven years of client work. Now building AI-first."
+    />
+
+    <div class="space-y-6 text-lg leading-relaxed text-ink-muted">
+      <p>
+        I've spent over seven years building websites at agencies, first with
+        WordPress, then with Drupal for enterprise clients and international
+        organisations. Today I work with React, Next.js and TypeScript, using an
+        AI-first workflow: I design the system, direct AI agents to build it,
+        and rely on tests to keep the output honest.
+      </p>
+      <a
+        href="/about"
+        class="inline-flex items-center gap-2 font-medium text-olive underline decoration-sage underline-offset-4 transition-colors hover:decoration-olive"
+      >
+        More about me <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</section>
