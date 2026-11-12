@@ -1,0 +1,30 @@
+---
+interface Fact {
+  value: string;
+  label: string;
+}
+
+const facts: Fact[] = [
+  { value: '7+', label: 'years building for the web' },
+  { value: '5+', label: 'long-running client projects' },
+  { value: '2', label: 'own products built with Next.js' },
+  { value: 'Remote', label: 'from Maribor, Slovenia' },
+];
+---
+
+<section aria-labelledby="facts-heading" class="bg-sage-50">
+  <h2 id="facts-heading" class="sr-only">
+    Quick facts
+  </h2>
+
+  <dl class="mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-10 px-4 py-12 md:grid-cols-4">
+    {facts.map((fact) => (
+      <div class="flex flex-col gap-1 border-l border-sage pl-5">
+        <dt class="order-2 text-sm leading-snug text-ink-muted">
+          {fact.label}
+        </dt>
+        <dd class="order-1 font-serif text-4xl text-olive">{fact.value}</dd>
+      </div>
+    ))}
+  </dl>
+</section>
