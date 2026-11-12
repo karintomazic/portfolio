@@ -14,7 +14,11 @@ export interface SocialLink extends NavLink {
 }
 
 export const socialLinks: SocialLink[] = [
-  { href: 'https://www.linkedin.com/in/karin-tomazic', label: 'LinkedIn', icon: 'linkedin' },
+  {
+    href: 'https://www.linkedin.com/in/karin-tomazic',
+    label: 'LinkedIn',
+    icon: 'linkedin',
+  },
   { href: 'https://github.com/karintomazic', label: 'GitHub', icon: 'github' },
   { href: 'mailto:tomazickarin@gmail.com', label: 'Email', icon: 'mail' },
 ];
