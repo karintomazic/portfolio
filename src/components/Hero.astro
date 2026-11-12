@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import portrait from '../assets/karin.jpeg';
+import portrait from '../assets/karin.png';
 
 const socials = [
   { href: 'https://www.linkedin.com/in/karin-tomazic', label: 'LinkedIn' },
@@ -71,19 +71,21 @@ const socials = [
     <!-- Decorative arch behind the photo -->
     <div
       aria-hidden="true"
-      class="absolute inset-0 translate-x-3 translate-y-3 rounded-t-full bg-sage-50"
+      class="absolute inset-0 translate-x-3 translate-y-3 rounded-t-full bg-sage/50"
     ></div>
 
-    <Image
-      src={portrait}
-      alt="Karin Tomazic smiling, wearing a dark turtleneck"
-      widths={[400, 600, 800, 1200]}
-      sizes="(min-width: 768px) 448px, 90vw"
-      loading="eager"
-      fetchpriority="high"
-      class="relative aspect-[4/5] w-full rounded-t-full object-cover object-[50%_25%]"
-    />
-
+    <!-- Photo on a light sage arch -->
+    <div class="relative overflow-hidden rounded-t-full bg-sage-50">
+      <Image
+        src={portrait}
+        alt="Karin Tomazic smiling, wearing a dark turtleneck"
+        widths={[400, 600, 800, 1200]}
+        sizes="(min-width: 768px) 448px, 90vw"
+        loading="eager"
+        fetchpriority="high"
+        class="aspect-[4/5] w-full object-cover object-[50%_25%]"
+      />
+    </div>
     <!-- "Open to work" card, inspired by 03 -->
     <div class="absolute bottom-6 -left-2 rounded-2xl border border-white/60 bg-cream/85 px-5 py-4 shadow-lg backdrop-blur-md sm:-left-8">
       <p class="flex items-center gap-2 text-sm font-medium text-ink">
