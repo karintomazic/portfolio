@@ -1,1 +1,27 @@
 @import 'tailwindcss';
+@import '@fontsource-variable/fraunces';
+@import '@fontsource-variable/dm-sans';
+
+@theme {
+  /* Fonts */
+  --font-serif: 'Fraunces Variable', Georgia, serif;
+  --font-sans: 'DM Sans Variable', system-ui, sans-serif;
+
+  /* Backgrounds */
+  --color-cream: #faf6f0; /* page background */
+  --color-sand: #f2dec7; /* warm sections */
+  --color-sage-50: #e8ede6; /* soft green sections, info strip */
+
+  /* Text: all pass WCAG AA (4.5:1) on cream, sand and sage-50 */
+  --color-ink: #2b2a26; /* main text:
+  --color-ink-muted: #5c5a52; /* secon
+  --color-olive: #6b6d43; /* headings, on olive 5.4:1 */
+  --color-olive-dark: #4a4c2c; /* hove
+  --color-terracotta-dark: #a4513a; /* it 5.5:1 */
+
+  /* Decoration only: never use for text */
+  --color-sage: #99b4aa;
+  --color-moss: #aba66f;
+  --color-terracotta: #cf7d65;
+  --color-blush: #e1b8a2;
+}
