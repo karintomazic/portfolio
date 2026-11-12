@@ -1,70 +1,39 @@
 ---
-import { navLinks, socialLinks } from '../data/navigation';
+import { socialLinks } from '../data/navigation';
+import SocialIcon from './SocialIcon.astro';
 
 const year = new Date().getFullYear();
 ---
 
 <footer class="border-t border-decor/40">
-  <div class="mx-auto grid max-w-6xl gap-10 px-4 py-12 md:grid-cols-[2fr_1fr_1fr]">
-    <div>
-      <a href="/" class="group inline-flex items-center gap-3 rounded-full">
-        <span
-          aria-hidden="true"
-          class="grid size-11 place-items-center rounded-full border border-primary font-serif text-2xl text-primary transition-colors group-hover:bg-primary group-hover:text-canvas"
-        >
-          K
-        </span>
-        <span class="font-serif text-lg text-ink">Karin Tomazic</span>
-      </a>
-      <p class="mt-4 max-w-xs text-sm leading-relaxed text-ink-muted">
-        Frontend developer building accessible, well-tested interfaces with
-        React, Next.js and TypeScript.
-      </p>
-    </div>
-
-    <nav aria-label="Footer">
-      <p class="text-xs font-medium tracking-[0.2em] text-ink-muted uppercase">
-        Pages
-      </p>
-      <ul class="mt-4 space-y-2">
-        {navLinks.map((link) => (
-          <li>
-            <a
-              href={link.href}
-              class="text-ink transition-colors hover:text-primary"
-            >
-              {link.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
-
-    <div>
-      <p
-        id="footer-social"
-        class="text-xs font-medium tracking-[0.2em] text-ink-muted uppercase"
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 pt-8 pb-4">
+    <a href="/" class="group inline-flex items-center gap-2">
+      <span
+        aria-hidden="true"
+        class="grid size-11 place-items-center rounded-full border border-primary font-serif text-2xl text-primary transition-colors group-hover:bg-primary group-hover:text-canvas"
       >
-        Follow me
-      </p>
-      <ul aria-labelledby="footer-social" class="mt-4 space-y-2">
-        {socialLinks.map((link) => (
-          <li>
-            <a
-              href={link.href}
-              class="text-ink transition-colors hover:text-primary"
-            >
-              {link.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
+        K
+      </span>
+      <span class="font-serif text-lg text-ink">Karin Tomazic</span>
+    </a>
+
+    <ul aria-label="Social links" class="flex gap-3">
+      {socialLinks.map((social) => (
+        <li>
+          <a
+            href={social.href}
+            title={social.label}
+            class="grid size-11 place-items-center rounded-full border border-decor text-primary transition-colors hover:border-primary hover:bg-primary hover:text-canvas"
+          >
+            <SocialIcon name={social.icon} class="size-[18px]" />
+            <span class="sr-only">{social.label}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
   </div>
 
-  <div class="border-t border-decor/40">
-    <p class="mx-auto max-w-6xl px-4 py-6 text-sm text-ink-muted">
-      © {year} Karin Tomazic · Built with Astro, TypeScript and Tailwind CSS
-    </p>
-  </div>
+  <p class="mx-auto max-w-6xl px-4 pt-4 pb-8 text-center text-sm text-ink-muted">
+    © {year} Karin Tomazic · Built with Astro, TypeScript and Tailwind CSS
+  </p>
 </footer>
