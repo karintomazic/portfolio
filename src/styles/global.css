@@ -1,1 +1,37 @@
 @import 'tailwindcss';
+@import '@fontsource-variable/fraunces';
+@import '@fontsource-variable/dm-sans';
+
+@theme {
+  /* Fonts */
+  --font-serif: 'Fraunces Variable', Georgia, serif;
+  --font-sans: 'DM Sans Variable', system-ui, sans-serif;
+
+  /* Backgrounds */
+  --color-canvas: #f8f6f1; /* page background, also light text on dark blocks */
+  --color-surface: #e3ebf2; /* light blue panels */
+  --color-surface-alt: #e0efe9; /* mint panels and background glow */
+
+  /* Text: all pass WCAG AA (4.5:1) on canvas, surface and surface-alt */
+  --color-ink: #1c2433; /* main text: 14.4:1 on canvas */
+  --color-ink-muted: #4f5869; /* secondary text: 5.9:1 or more */
+  --color-primary: #24426b; /* navy: headings, links, buttons: 8.4:1 or more */
+  --color-primary-dark: #172d4a; /* hover states */
+  --color-accent: #1f6f6b; /* teal: eyebrows, labels: 4.9:1 or more */
+
+  /* Decoration only: never use for text */
+  --color-decor: #9fb8cf; /* borders and background glow */
+}
+
+@layer base {
+  /* Visible focus ring for keyboard users, on every interactive element */
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+
+  /* Leave space above sections when jumping to them with anchor links */
+  [id] {
+    scroll-margin-top: 2rem;
+  }
+}
