@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import portrait from '../assets/karin.png';
 import { socialLinks } from '../data/navigation';
+import ArrowIcon from './ArrowIcon.astro';
 ---
 
 <section
@@ -29,9 +30,10 @@ import { socialLinks } from '../data/navigation';
     <div class="mt-8 flex flex-wrap gap-4">
       <a
         href="/projects"
-        class="rounded-full bg-primary px-6 py-3 text-canvas transition-colors hover:bg-primary-dark"
+        class="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-canvas transition-colors hover:bg-primary-dark"
       >
-        View my work <span aria-hidden="true">→</span>
+        View my work{' '}
+        <ArrowIcon class="transition-transform motion-safe:group-hover:translate-x-0.5" />
       </a>
       <a
         href="/karin-tomazic-cv.pdf"

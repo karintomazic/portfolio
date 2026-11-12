@@ -1,5 +1,6 @@
 ---
 import SectionHeading from './SectionHeading.astro';
+import ArrowIcon from './ArrowIcon.astro';
 ---
 
 <section
@@ -28,12 +29,7 @@ import SectionHeading from './SectionHeading.astro';
         <span class="underline decoration-decor underline-offset-4 transition-colors group-hover:decoration-primary">
           More about me
         </span>
-        <span
-          aria-hidden="true"
-          class="transition-transform group-hover:translate-x-1"
-        >
-          →
-        </span>
+        <ArrowIcon class="transition-transform motion-safe:group-hover:translate-x-0.5" />
       </a>
     </div>
   </div>

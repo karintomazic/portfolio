@@ -5,6 +5,7 @@ import SectionHeading from './SectionHeading.astro';
 import tattoobyjs from '../assets/projects/tattoobyjs.png';
 import movieApp from '../assets/projects/react-onboarding-nextjs.png';
 import iobi from '../assets/projects/iobi.png';
+import ArrowIcon from './ArrowIcon.astro';
 
 interface Project {
   slug: string;
@@ -67,12 +68,7 @@ const projects: Project[] = [
         <span class="underline decoration-decor underline-offset-4 transition-colors group-hover:decoration-primary">
           View all projects
         </span>
-        <span
-          aria-hidden="true"
-          class="transition-transform group-hover:translate-x-1"
-        >
-          →
-        </span>
+        <ArrowIcon class="transition-transform motion-safe:group-hover:translate-x-0.5" />
       </a>
     </div>
 
@@ -135,9 +131,7 @@ const projects: Project[] = [
                 <span class="underline decoration-decor underline-offset-4 group-hover:decoration-primary">
                   View case study
                 </span>
-                <span class="transition-transform group-hover:translate-x-1">
-                  →
-                </span>
+                <ArrowIcon class="transition-transform motion-safe:group-hover:translate-x-0.5" />
               </p>
             </div>
           </li>

@@ -1,5 +1,6 @@
 ---
 const email = 'tomazickarin@gmail.com';
+import ArrowIcon from './ArrowIcon.astro';
 ---
 
 <section
@@ -37,9 +38,10 @@ const email = 'tomazickarin@gmail.com';
       <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
         <a
           href={`mailto:${email}`}
-          class="rounded-full bg-canvas px-6 py-3 font-medium text-primary transition-colors hover:bg-white focus-visible:outline-canvas"
+          class="group inline-flex items-center gap-2 rounded-full bg-canvas px-6 py-3 font-medium text-primary transition-colors hover:bg-white focus-visible:outline-canvas"
         >
-          Let's talk <span aria-hidden="true">→</span>
+          Let's talk{' '}
+          <ArrowIcon class="transition-transform motion-safe:group-hover:translate-x-0.5" />
         </a>
         <a
           href="https://www.linkedin.com/in/karin-tomazic"
