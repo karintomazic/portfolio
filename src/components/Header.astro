@@ -14,7 +14,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
     <a href="/" class="group flex items-center gap-3 rounded-full">
       <span
         aria-hidden="true"
-        class="grid size-11 place-items-center rounded-full border border-olive font-serif text-2xl text-olive transition-colors group-hover:bg-olive group-hover:text-cream"
+        class="grid size-11 place-items-center rounded-full border border-primary font-serif text-2xl text-primary transition-colors group-hover:bg-primary group-hover:text-canvas"
       >
         K
       </span>
@@ -27,7 +27,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
       type="button"
       aria-expanded="false"
       aria-controls="main-menu"
-      class="grid size-11 place-items-center rounded-full border border-olive text-olive md:hidden"
+      class="grid size-11 place-items-center rounded-full border border-primary text-primary md:hidden"
     >
       <span class="sr-only">Menu</span>
       <svg
@@ -54,7 +54,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
           <a
             href={link.href}
             aria-current={currentPath === link.href ? 'page' : undefined}
-            class="block py-2 text-ink underline-offset-8 transition-colors hover:text-olive aria-[current=page]:text-olive aria-[current=page]:underline"
+            class="block py-2 text-ink underline-offset-8 transition-colors hover:text-primary aria-[current=page]:text-primary aria-[current=page]:underline"
           >
             {link.label}
           </a>
@@ -63,7 +63,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
       <li class="pt-2 md:pt-0">
         <a
           href="/#contact"
-          class="inline-block rounded-full bg-olive px-5 py-2.5 text-cream transition-colors hover:bg-olive-dark"
+          class="inline-block rounded-full bg-primary px-5 py-2.5 text-canvas transition-colors hover:bg-primary-dark"
         >
           Let's talk <span aria-hidden="true">→</span>
         </a>

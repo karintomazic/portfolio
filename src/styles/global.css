@@ -8,28 +8,25 @@
   --font-sans: 'DM Sans Variable', system-ui, sans-serif;
 
   /* Backgrounds */
-  --color-cream: #faf6f0; /* page background */
-  --color-sand: #f2dec7; /* warm sections */
-  --color-sage-50: #e8ede6; /* soft green sections, info strip */
+  --color-canvas: #f8f6f1; /* page background, also light text on dark blocks */
+  --color-surface: #e3ebf2; /* light blue sections and panels */
+  --color-surface-alt: #e0efe9; /* mint panels */
 
-  /* Text: all pass WCAG AA (4.5:1) on cream, sand and sage-50 */
-  --color-ink: #2b2a26; /* main text: 13.3:1 */
-  --color-ink-muted: #5c5a52; /* secondary text: 6.4:1 */
-  --color-olive: #6b6d43; /* headings, links, buttons: 5.0:1, white on olive 5.4:1 */
-  --color-olive-dark: #4a4c2c; /* hover states: 8.3:1 */
-  --color-terracotta-dark: #a4513a; /* accent text: 5.1:1, white on it 5.5:1 */
+  /* Text: all pass WCAG AA (4.5:1) on canvas, surface and surface-alt */
+  --color-ink: #1c2433; /* main text: 14.4:1 on canvas */
+  --color-ink-muted: #4f5869; /* secondary text: 5.9:1 or more */
+  --color-primary: #24426b; /* navy: headings, links, buttons: 8.4:1 or more */
+  --color-primary-dark: #172d4a; /* hover states */
+  --color-accent: #1f6f6b; /* teal: eyebrows, labels: 4.9:1 or more */
 
   /* Decoration only: never use for text */
-  --color-sage: #99b4aa;
-  --color-moss: #aba66f;
-  --color-terracotta: #cf7d65;
-  --color-blush: #e1b8a2;
+  --color-decor: #9fb8cf; /* borders, underlines, photo arch */
 }
 
 /* Visible focus ring for keyboard users, on every interactive element */
 @layer base {
   :focus-visible {
-    outline: 2px solid var(--color-olive);
+    outline: 2px solid var(--color-primary);
     outline-offset: 3px;
   }
 

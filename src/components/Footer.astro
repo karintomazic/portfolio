@@ -4,13 +4,13 @@ import { navLinks, socialLinks } from '../data/navigation';
 const year = new Date().getFullYear();
 ---
 
-<footer class="border-t border-sage/40">
+<footer class="border-t border-decor/40">
   <div class="mx-auto grid max-w-6xl gap-10 px-4 py-12 md:grid-cols-[2fr_1fr_1fr]">
     <div>
       <a href="/" class="group inline-flex items-center gap-3 rounded-full">
         <span
           aria-hidden="true"
-          class="grid size-11 place-items-center rounded-full border border-olive font-serif text-2xl text-olive transition-colors group-hover:bg-olive group-hover:text-cream"
+          class="grid size-11 place-items-center rounded-full border border-primary font-serif text-2xl text-primary transition-colors group-hover:bg-primary group-hover:text-canvas"
         >
           K
         </span>
@@ -31,7 +31,7 @@ const year = new Date().getFullYear();
           <li>
             <a
               href={link.href}
-              class="text-ink transition-colors hover:text-olive"
+              class="text-ink transition-colors hover:text-primary"
             >
               {link.label}
             </a>
@@ -52,7 +52,7 @@ const year = new Date().getFullYear();
           <li>
             <a
               href={link.href}
-              class="text-ink transition-colors hover:text-olive"
+              class="text-ink transition-colors hover:text-primary"
             >
               {link.label}
             </a>
@@ -62,7 +62,7 @@ const year = new Date().getFullYear();
     </div>
   </div>
 
-  <div class="border-t border-sage/40">
+  <div class="border-t border-decor/40">
     <p class="mx-auto max-w-6xl px-4 py-6 text-sm text-ink-muted">
       © {year} Karin Tomazic · Built with Astro, TypeScript and Tailwind CSS
     </p>

@@ -10,12 +10,12 @@ import { socialLinks } from '../data/navigation';
 >
   <!-- Text -->
   <div class="order-2 md:order-1">
-    <p class="text-sm font-medium tracking-[0.2em] text-terracotta-dark uppercase">
+    <p class="text-sm font-medium tracking-[0.2em] text-accent uppercase">
       Hello, I'm
     </p>
     <h1
       id="hero-heading"
-      class="mt-3 font-serif text-5xl leading-[1.05] text-olive sm:text-6xl lg:text-7xl"
+      class="mt-3 font-serif text-5xl leading-[1.05] text-primary sm:text-6xl lg:text-7xl"
     >
       Karin Tomazic
     </h1>
@@ -29,13 +29,13 @@ import { socialLinks } from '../data/navigation';
     <div class="mt-8 flex flex-wrap gap-4">
       <a
         href="/projects"
-        class="rounded-full bg-olive px-6 py-3 text-cream transition-colors hover:bg-olive-dark"
+        class="rounded-full bg-primary px-6 py-3 text-canvas transition-colors hover:bg-primary-dark"
       >
         View my work <span aria-hidden="true">→</span>
       </a>
       <a
         href="/karin-tomazic-cv.pdf"
-        class="rounded-full border border-olive px-6 py-3 text-olive transition-colors hover:bg-olive hover:text-cream"
+        class="rounded-full border border-primary px-6 py-3 text-primary transition-colors hover:bg-primary hover:text-canvas"
       >
         Download CV <span class="sr-only">(PDF)</span>
       </a>
@@ -52,7 +52,7 @@ import { socialLinks } from '../data/navigation';
         <li>
           <a
             href={social.href}
-            class="text-ink underline decoration-sage underline-offset-4 transition-colors hover:text-olive hover:decoration-olive"
+            class="text-ink underline decoration-decor underline-offset-4 transition-colors hover:text-primary hover:decoration-primary"
           >
             {social.label}
           </a>
@@ -66,11 +66,11 @@ import { socialLinks } from '../data/navigation';
     <!-- Decorative arch behind the photo -->
     <div
       aria-hidden="true"
-      class="absolute inset-0 translate-x-3 translate-y-3 rounded-t-full bg-sage/50"
+      class="absolute inset-0 translate-x-3 translate-y-3 rounded-t-full bg-decor/50"
     ></div>
 
-    <!-- Photo on a light sage arch -->
-    <div class="relative overflow-hidden rounded-t-full bg-sage-50">
+    <!-- Photo on a light decor arch -->
+    <div class="relative overflow-hidden rounded-t-full bg-surface">
       <Image
         src={portrait}
         alt="Karin Tomazic smiling, wearing a dark turtleneck"
@@ -82,9 +82,9 @@ import { socialLinks } from '../data/navigation';
       />
     </div>
     <!-- "Open to work" card, inspired by 03 -->
-    <div class="absolute bottom-6 -left-2 rounded-2xl border border-white/60 bg-cream/85 px-5 py-4 shadow-lg backdrop-blur-md sm:-left-8">
+    <div class="absolute bottom-6 -left-2 rounded-2xl border border-white/60 bg-canvas/85 px-5 py-4 shadow-lg backdrop-blur-md sm:-left-8">
       <p class="flex items-center gap-2 text-sm font-medium text-ink">
-        <span aria-hidden="true" class="size-2 rounded-full bg-olive"></span>
+        <span aria-hidden="true" class="size-2 rounded-full bg-primary"></span>
         Open to work
       </p>
       <p class="mt-1 text-sm text-ink-muted">Remote · full-time or contract</p>
