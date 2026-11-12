@@ -1,12 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import portrait from '../assets/karin.png';
-
-const socials = [
-  { href: 'https://www.linkedin.com/in/karin-tomazic', label: 'LinkedIn' },
-  { href: 'https://github.com/karintomazic', label: 'GitHub' },
-  { href: 'mailto:tomazickarin@gmail.com', label: 'Email' },
-];
+import { socialLinks } from '../data/navigation';
 ---
 
 <section
@@ -53,7 +48,7 @@ const socials = [
       Let's connect
     </p>
     <ul aria-labelledby="connect-heading" class="mt-3 flex gap-6">
-      {socials.map((social) => (
+      {socialLinks.map((social) => (
         <li>
           <a
             href={social.href}

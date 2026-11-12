@@ -20,16 +20,19 @@ const projects: Project[] = [
   {
     slug: 'tattoobyjs',
     title: 'tattoobyjs',
-    description: 'Website for a tattoo artist client in Maribor, with a portfolio, aftercare products and booking info.',
+    description:
+      'Website for a tattoo artist client in Maribor, with a portfolio, aftercare products and booking info.',
     image: tattoobyjs,
-    imageAlt: 'tattoobyjs home page with a large tattoo photo and the studio name',
+    imageAlt:
+      'tattoobyjs home page with a large tattoo photo and the studio name',
     tags: ['Next.js', 'PocketBase', 'Tailwind CSS', 'Docker'],
     status: 'Live client project',
   },
   {
     slug: 'react-onboarding-nextjs',
     title: 'Movie database app',
-    description: 'TMDB-powered app with search, authentication and a documented, tested component library.',
+    description:
+      'TMDB-powered app with search, authentication and a documented, tested component library.',
     image: movieApp,
     imageAlt: 'Movie app showing a list of popular movies with posters',
     tags: ['Next.js', 'TypeScript', 'Auth.js', 'Storybook', 'Vitest'],
@@ -38,64 +41,82 @@ const projects: Project[] = [
   {
     slug: 'iobi',
     title: 'iobi',
-    description: 'Multilingual catalogue for a family business making handcrafted concrete garden products.',
+    description:
+      'Multilingual catalogue for a family business making handcrafted concrete garden products.',
     image: iobi,
-    imageAlt: 'iobi home page with a heading about concrete products and photos of garden statues',
+    imageAlt:
+      'iobi home page with a heading about concrete products and photos of garden statues',
     tags: ['Next.js', 'PocketBase', 'Tailwind CSS', 'i18n'],
     status: 'Coming soon',
   },
 ];
 ---
 
-
 <section aria-labelledby="work-heading" class="bg-sage-50">
   <div class="mx-auto max-w-6xl px-4 py-20 md:py-28">
     <div class="flex flex-wrap items-end justify-between gap-6">
-      <SectionHeading id="work-heading" eyebrow="Selected work" title="Things I've built" />
-      <a href="/projects" class="group inline-flex items-center gap-2 font-medium text-olive">
+      <SectionHeading
+        id="work-heading"
+        eyebrow="Selected work"
+        title="Things I've built"
+      />
+      <a
+        href="/projects"
+        class="group inline-flex items-center gap-2 font-medium text-olive"
+      >
         <span class="underline decoration-sage underline-offset-4 transition-colors group-hover:decoration-olive">
           View all projects
         </span>
-        <span aria-hidden="true" class="transition-transform group-hover:translate-x-1">→</span>
+        <span
+          aria-hidden="true"
+          class="transition-transform group-hover:translate-x-1"
+        >
+          →
+        </span>
       </a>
     </div>
 
     <ul class="mt-12 grid gap-8 md:grid-cols-3">
-      {
-        projects.map((project) => (
-          <li class="group relative flex flex-col overflow-hidden rounded-3xl bg-cream shadow-sm ring-1 ring-sage/30 transition-shadow hover:shadow-lg has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-4 has-[a:focus-visible]:outline-olive">
-            <div class="relative overflow-hidden">
-              <Image
-                src={project.image}
-                alt={project.imageAlt}
-                widths={[400, 800]}
-                sizes="(min-width: 768px) 360px, 100vw"
-                class="aspect-[16/10] w-full object-cover object-top transition-transform duration-500 motion-safe:group-hover:scale-105"
-              />
-              <span class="absolute bottom-4 left-4 rounded-full bg-cream/90 px-3 py-1 text-xs font-medium text-ink backdrop-blur">
-                {project.status}
-              </span>
-            </div>
+      {projects.map((project) => (
+        <li class="group relative flex flex-col overflow-hidden rounded-3xl bg-cream shadow-sm ring-1 ring-sage/30 transition-shadow hover:shadow-lg has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-4 has-[a:focus-visible]:outline-olive">
+          <div class="relative overflow-hidden">
+            <Image
+              src={project.image}
+              alt={project.imageAlt}
+              widths={[400, 800]}
+              sizes="(min-width: 768px) 360px, 100vw"
+              class="aspect-[16/10] w-full object-cover object-top transition-transform duration-500 motion-safe:group-hover:scale-105"
+            />
+            <span class="absolute bottom-4 left-4 rounded-full bg-cream/90 px-3 py-1 text-xs font-medium text-ink backdrop-blur">
+              {project.status}
+            </span>
+          </div>
 
-            <div class="flex flex-1 flex-col p-6">
-              <h3 class="font-serif text-xl text-ink">
-                <a
-                  href={`/projects/${project.slug}`}
-                  class="outline-none after:absolute after:inset-0"
-                >
-                  {project.title}
-                </a>
-              </h3>
-              <p class="mt-2 leading-relaxed text-ink-muted">{project.description}</p>
-              <ul aria-label="Technologies" class="mt-auto flex flex-wrap gap-2 pt-5">
-                {project.tags.map((tag) => (
-                  <li class="rounded-full bg-sage-50 px-3 py-1 text-xs text-ink">{tag}</li>
-                ))}
-              </ul>
-            </div>
-          </li>
-        ))
-      }
+          <div class="flex flex-1 flex-col p-6">
+            <h3 class="font-serif text-xl text-ink">
+              <a
+                href={`/projects/${project.slug}`}
+                class="outline-none after:absolute after:inset-0"
+              >
+                {project.title}
+              </a>
+            </h3>
+            <p class="mt-2 leading-relaxed text-ink-muted">
+              {project.description}
+            </p>
+            <ul
+              aria-label="Technologies"
+              class="mt-auto flex flex-wrap gap-2 pt-5"
+            >
+              {project.tags.map((tag) => (
+                <li class="rounded-full bg-sage-50 px-3 py-1 text-xs text-ink">
+                  {tag}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </li>
+      ))}
     </ul>
   </div>
 </section>
