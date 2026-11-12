@@ -1,0 +1,105 @@
+---
+const links = [
+  { href: '/projects', label: 'Work' },
+  { href: '/about', label: 'About' },
+  { href: '/how-i-work', label: 'How I work' },
+];
+
+// Current page, without a trailing slash, so we can highlight the active link
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<header class="mx-auto max-w-6xl px-4 py-6">
+  <nav
+    aria-label="Main"
+    class="flex flex-wrap items-center justify-between gap-4"
+  >
+    <!-- Logo: K monogram + name, links to the home page -->
+    <a href="/" class="group flex items-center gap-3 rounded-full">
+      <span
+        aria-hidden="true"
+        class="grid size-11 place-items-center rounded-full border border-olive font-serif text-2xl text-olive transition-colors group-hover:bg-olive group-hover:text-cream"
+      >
+        K
+      </span>
+      <span class="font-serif text-lg text-ink">Karin Tomazic</span>
+    </a>
+
+    <!-- Menu button: only visible on small screens -->
+    <button
+      id="menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="main-menu"
+      class="grid size-11 place-items-center rounded-full border border-olive text-olive md:hidden"
+    >
+      <span class="sr-only">Menu</span>
+      <svg
+        aria-hidden="true"
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+      >
+        <path d="M3 6h14M3 10h14M3 14h14" />
+      </svg>
+    </button>
+
+    <!-- Links: hidden on mobile until the menu is opened, always visible on desktop -->
+    <ul
+      id="main-menu"
+      class="hidden w-full flex-col gap-1 pt-2 md:flex md:w-auto md:flex-row md:items-center md:gap-8 md:pt-0"
+    >
+      {links.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            aria-current={currentPath === link.href ? 'page' : undefined}
+            class="block py-2 text-ink underline-offset-8 transition-colors hover:text-olive aria-[current=page]:text-olive aria-[current=page]:underline"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+      <li class="pt-2 md:pt-0">
+        <a
+          href="/#contact"
+          class="inline-block rounded-full bg-olive px-5 py-2.5 text-cream transition-colors hover:bg-olive-dark"
+        >
+          Let's talk <span aria-hidden="true">→</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const button = document.querySelector<HTMLButtonElement>('#menu-toggle');
+  const menu = document.querySelector<HTMLUListElement>('#main-menu');
+
+  if (button && menu) {
+    const setOpen = (open: boolean) => {
+      button.setAttribute('aria-expanded', String(open));
+      menu.classList.toggle('hidden', !open);
+      menu.classList.toggle('flex', open);
+    };
+
+    button.addEventListener('click', () => {
+      setOpen(button.getAttribute('aria-expanded') !== 'true');
+    });
+
+    // Escape closes the menu and puts focus back on the button
+    document.addEventListener('keydown', (event) => {
+      if (
+        event.key === 'Escape' &&
+        button.getAttribute('aria-expanded') === 'true'
+      ) {
+        setOpen(false);
+        button.focus();
+      }
+    });
+  }
+</script>
