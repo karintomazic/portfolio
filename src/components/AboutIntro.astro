@@ -23,9 +23,17 @@ import SectionHeading from './SectionHeading.astro';
       </p>
       <a
         href="/about"
-        class="inline-flex items-center gap-2 font-medium text-olive underline decoration-sage underline-offset-4 transition-colors hover:decoration-olive"
+        class="group inline-flex items-center gap-2 font-medium text-olive"
       >
-        More about me <span aria-hidden="true">→</span>
+        <span class="underline decoration-sage underline-offset-4 transition-colors group-hover:decoration-olive">
+          More about me
+        </span>
+        <span
+          aria-hidden="true"
+          class="transition-transform group-hover:translate-x-1"
+        >
+          →
+        </span>
       </a>
     </div>
   </div>
