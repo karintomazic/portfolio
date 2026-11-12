@@ -56,87 +56,57 @@ const projects: Project[] = [
 <section aria-labelledby="work-heading">
   <div class="mx-auto max-w-6xl px-4 py-20 md:py-28">
     <div class="flex flex-wrap items-end justify-between gap-6">
-      <SectionHeading
-        id="work-heading"
-        eyebrow="Selected work"
-        title="Things I've built"
-      />
-      <a
-        href="/projects"
-        class="group inline-flex items-center gap-2 font-medium text-primary"
-      >
+      <SectionHeading id="work-heading" eyebrow="Selected work" title="Things I've built" />
+      <a href="/projects" class="group inline-flex items-center gap-2 font-medium text-primary">
         <span class="underline decoration-decor underline-offset-4 transition-colors group-hover:decoration-primary">
           View all projects
         </span>
-        <ArrowIcon class="transition-transform motion-safe:group-hover:translate-x-0.5" />
+        <ArrowIcon class="transition-transform motion-safe:group-hover:translate-x-1" />
       </a>
     </div>
 
-    <ol class="mt-14 space-y-20 md:space-y-28">
-      {projects.map((project, index) => {
-        const reversed = index % 2 === 1;
-        return (
-          <li class="group relative grid items-center gap-8 rounded-[2rem] md:grid-cols-12 md:gap-12 has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-8 has-[a:focus-visible]:outline-primary">
-            <div
-              class:list={[
-                'relative overflow-hidden rounded-[2rem] p-6 sm:p-10 md:col-span-7',
-                reversed ? 'bg-surface md:order-last' : 'bg-surface-alt',
-              ]}
-            >
-              <div
-                aria-hidden="true"
-                class="absolute -top-16 -right-16 size-56 rounded-full bg-white/50"
-              />
+    <ol class="mt-12 border-b border-decor">
+      {
+        projects.map((project, index) => (
+          <li class="group relative grid gap-6 border-t border-decor py-10 md:grid-cols-[3rem_6fr_5fr] md:items-center md:gap-10 has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-4 has-[a:focus-visible]:outline-primary">
+            <span aria-hidden="true" class="font-serif text-2xl text-accent md:self-start md:pt-1">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+
+            <div>
+              <p class="text-xs font-medium tracking-[0.2em] text-accent uppercase">{project.status}</p>
+              <h3 class="mt-2 flex items-center gap-4 font-serif text-3xl text-primary">
+                <a href={`/projects/${project.slug}`} class="outline-none after:absolute after:inset-0">
+                  {project.title}
+                </a>
+                <span
+                  aria-hidden="true"
+                  class="grid size-10 place-items-center rounded-full border border-decor transition-colors group-hover:border-primary group-hover:bg-primary group-hover:text-canvas"
+                >
+                  <ArrowIcon />
+                </span>
+              </h3>
+              <p class="mt-3 max-w-xl text-lg leading-relaxed text-ink-muted">{project.description}</p>
+              <ul aria-label="Technologies" class="mt-5 flex flex-wrap gap-2">
+                {project.tags.map((tag) => (
+                  <li class="rounded-full border border-decor px-3 py-1 text-sm text-ink-muted">{tag}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="overflow-hidden rounded-2xl shadow-lg ring-1 shadow-primary/10 ring-decor/40">
               <Image
                 src={project.image}
                 alt={project.imageAlt}
-                widths={[600, 1200]}
-                sizes="(min-width: 768px) 600px, 100vw"
-                class="relative aspect-[16/10] w-full rounded-xl object-cover object-top shadow-xl transition-transform duration-500 motion-safe:group-hover:-translate-y-2"
+                widths={[480, 960]}
+                sizes="(min-width: 768px) 460px, 100vw"
+                class="aspect-[16/10] w-full object-cover object-top transition-transform duration-500 motion-safe:group-hover:scale-105"
               />
             </div>
-
-            <div class="md:col-span-5">
-              <p class="flex items-center gap-3 text-sm font-medium tracking-[0.2em] text-accent uppercase">
-                <span
-                  aria-hidden="true"
-                  class="font-serif text-lg tracking-normal text-primary"
-                >
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-                {project.status}
-              </p>
-              <h3 class="mt-4 font-serif text-3xl text-primary sm:text-4xl">
-                <a
-                  href={`/projects/${project.slug}`}
-                  class="outline-none after:absolute after:inset-0"
-                >
-                  {project.title}
-                </a>
-              </h3>
-              <p class="mt-4 text-lg leading-relaxed text-ink-muted">
-                {project.description}
-              </p>
-              <ul aria-label="Technologies" class="mt-6 flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <li class="rounded-full border border-decor px-3 py-1 text-sm text-ink-muted">
-                    {tag}
-                  </li>
-                ))}
-              </ul>
-              <p
-                aria-hidden="true"
-                class="mt-8 inline-flex items-center gap-2 font-medium text-primary"
-              >
-                <span class="underline decoration-decor underline-offset-4 group-hover:decoration-primary">
-                  View case study
-                </span>
-                <ArrowIcon class="transition-transform motion-safe:group-hover:translate-x-0.5" />
-              </p>
-            </div>
           </li>
-        );
-      })}
+        ))
+      }
     </ol>
   </div>
 </section>
+
