@@ -37,6 +37,124 @@
 }
 
 /* ------------------------------------------------------------------
+   Case study text. The Markdown body comes out as plain HTML
+   (h2, p, ul, strong, a), so we style those tags inside .case-study.
+   ------------------------------------------------------------------ */
+.case-study {
+  color: var(--color-ink-muted);
+  font-size: 1.125rem;
+  line-height: 1.75;
+
+  & h2 {
+    margin-top: 3rem;
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    line-height: 1.2;
+    color: var(--color-primary);
+  }
+
+  & h2:first-child {
+    margin-top: 0;
+  }
+
+  & p,
+  & ul {
+    margin-top: 1rem;
+  }
+
+  & ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  /* Teal dots instead of default bullets */
+  & li {
+    position: relative;
+    margin-top: 0.75rem;
+    padding-left: 1.5rem;
+  }
+
+  & li::before {
+    content: '';
+    position: absolute;
+    left: 0.25rem;
+    top: 0.7em;
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 9999px;
+    background: var(--color-accent);
+  }
+
+  & strong {
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+
+  & a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-decoration-color: var(--color-decor);
+    text-underline-offset: 4px;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Logo row that scrolls endlessly ("I work with").
+   The track holds the list twice; moving it left by half its width
+   lands exactly on the start of the copy, so the loop has no jump.
+   ------------------------------------------------------------------ */
+@keyframes marquee {
+  to {
+    translate: -50% 0;
+  }
+}
+
+.marquee {
+  overflow: hidden;
+  /* Fade the logos out at both edges instead of cutting them off */
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 6%,
+    #000 94%,
+    transparent
+  );
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--marquee-duration, 30s) linear infinite;
+}
+
+/* Stops on hover, or when the pause button is pressed */
+.marquee:hover .marquee-track,
+.marquee[data-paused] .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Reduced motion: no scrolling, just all the logos, wrapping onto new lines */
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    mask-image: none;
+  }
+
+  .marquee-track {
+    width: auto;
+    animation: none;
+  }
+
+  .marquee-track > ul {
+    flex-wrap: wrap;
+    flex-shrink: 1;
+  }
+
+  .marquee-track > ul[aria-hidden] {
+    display: none;
+  }
+}
+
+/* ------------------------------------------------------------------
    Motion. Everything in this block only runs for people who haven't
    asked their system for reduced motion.
    ------------------------------------------------------------------ */
