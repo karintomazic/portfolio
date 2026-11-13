@@ -1,6 +1,7 @@
 ---
-// Every SVG in src/assets/logos, as { '../assets/logos/react.svg': '/_astro/react.123.svg', ... }
-const logoFiles = import.meta.glob<string>('../assets/logos/*.svg', {
+// Every SVG and PNG in src/assets/logos,
+// as { '../assets/logos/react.svg': '/_astro/react.123.svg', ... }
+const logoFiles = import.meta.glob<string>('../assets/logos/*.{svg,png}', {
   eager: true,
   query: '?url',
   import: 'default',
@@ -8,24 +9,27 @@ const logoFiles = import.meta.glob<string>('../assets/logos/*.svg', {
 
 interface Tool {
   label: string;
-  logo: string; // file name in src/assets/logos, without .svg
+  logo: string; // file name in src/assets/logos, with the extension
   height: number; // logo height in px: some logos need a little more or less to look the same size
 }
 
-// To add a tool: put its logo in src/assets/logos (e.g. scss.svg) and add a line here
+// To add a tool: put its logo in src/assets/logos and add a line here
 const tools: Tool[] = [
-  { label: 'React', logo: 'react', height: 24 },
-  { label: 'Next.js', logo: 'nextjs', height: 24 },
-  { label: 'TypeScript', logo: 'typescript', height: 22 },
-  { label: 'Tailwind CSS', logo: 'tailwindcss', height: 16 },
-  { label: 'Storybook', logo: 'storybook', height: 24 },
-  { label: 'Playwright', logo: 'playwright', height: 22 },
+  { label: 'React', logo: 'react.svg', height: 24 },
+  { label: 'Next.js', logo: 'nextjs.svg', height: 24 },
+  { label: 'TypeScript', logo: 'typescript.svg', height: 22 },
+  { label: 'Tailwind CSS', logo: 'tailwindcss.svg', height: 16 },
+  { label: 'SCSS', logo: 'sass.png', height: 24 },
+  { label: 'Vite', logo: 'vite.svg', height: 22 },
+  { label: 'Storybook', logo: 'storybook.svg', height: 24 },
+  { label: 'Playwright', logo: 'playwright.svg', height: 22 },
+  { label: 'PocketBase', logo: 'pocketbase.png', height: 22 },
 ];
 
-function logoUrl(name: string): string {
-  const url = logoFiles[`../assets/logos/${name}.svg`];
+function logoUrl(fileName: string): string {
+  const url = logoFiles[`../assets/logos/${fileName}`];
   // Fails the build with a clear message instead of showing a broken image
-  if (!url) throw new Error(`Missing logo: src/assets/logos/${name}.svg`);
+  if (!url) throw new Error(`Missing logo: src/assets/logos/${fileName}`);
   return url;
 }
 
