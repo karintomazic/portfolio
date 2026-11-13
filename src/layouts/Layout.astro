@@ -22,6 +22,11 @@ const {
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title} | Karin Tomazic</title>
+    <!-- Runs before the page shows: lets the CSS know JavaScript works,
+         so scroll-reveal content is only hidden when it can be revealed -->
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
   </head>
   <body class="min-h-screen bg-canvas font-sans text-ink antialiased">
     <!-- Soft background glow: a light blue blob top right, a mint one bottom left -->
@@ -44,5 +49,9 @@ const {
       <slot />
     </main>
     <Footer />
+
+    <script>
+      import '../scripts/effects.ts';
+    </script>
   </body>
 </html>

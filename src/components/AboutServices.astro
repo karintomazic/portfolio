@@ -40,7 +40,7 @@ const services: Service[] = [
   aria-labelledby="about-heading"
   class="mx-auto grid max-w-6xl gap-6 px-4 pb-24 md:grid-cols-[1.1fr_1fr]"
 >
-  <div class="rounded-[2rem] bg-surface p-8 sm:p-10">
+  <div data-reveal class="rounded-[2rem] bg-surface p-8 sm:p-10">
     <p class="text-xs font-semibold tracking-[0.2em] text-accent uppercase">
       About me
     </p>
@@ -69,8 +69,13 @@ const services: Service[] = [
   </div>
 
   <ul class="grid gap-4">
-    {services.map((service) => (
-      <li class="flex gap-5 rounded-[2rem] border border-white/70 bg-white/60 p-6 backdrop-blur">
+    {services.map((service, index) => (
+      <li
+        data-reveal
+        data-glass
+        style={`--i: ${index + 1}`}
+        class="relative flex gap-5 rounded-[2rem] border border-white/70 bg-white/60 p-6 backdrop-blur"
+      >
         <span class="grid size-12 shrink-0 place-items-center rounded-2xl bg-primary text-canvas">
           <svg
             aria-hidden="true"

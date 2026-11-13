@@ -11,23 +11,29 @@ import ArrowIcon from './ArrowIcon.astro';
   <!-- Text -->
   <div>
     <h1 id="hero-heading" class="font-serif">
-      <span class="block text-5xl text-ink sm:text-6xl">Hi, I'm</span>
+      <span data-intro style="--i: 0" class="block text-5xl text-primary">
+        Hi, I'm
+      </span>
       <!-- prettier-ignore -->
-      <span class="mt-1 block text-5xl leading-[1.05] font-semibold text-balance text-primary sm:text-7xl">Karin Tomazic<span aria-hidden="true" class="text-accent">.</span></span>
+      <span data-intro style="--i: 1" class="mt-1 block text-5xl leading-[1.05] font-semibold text-balance text-primary sm:text-7xl">Karin Tomazic<span aria-hidden="true" class="text-accent">.</span></span>
     </h1>
-    <p class="mt-6 text-lg font-medium text-ink">
+    <p data-intro style="--i: 2" class="mt-6 text-lg font-medium text-ink">
       Frontend Developer
       <br />
       <span class="font-normal text-ink-muted">based in</span> Maribor,
       Slovenia.
     </p>
-    <p class="mt-5 max-w-md leading-relaxed text-ink-muted">
+    <p
+      data-intro
+      style="--i: 3"
+      class="mt-5 max-w-md leading-relaxed text-ink-muted"
+    >
       I build accessible, well-tested web interfaces with React, Next.js and
       TypeScript, and use AI coding agents to ship them faster without cutting
       corners.
     </p>
 
-    <div class="mt-8 flex flex-wrap gap-3">
+    <div data-intro style="--i: 4" class="mt-8 flex flex-wrap gap-3">
       <a
         href="/projects"
         class="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 font-medium text-canvas shadow-lg shadow-primary/20 transition-colors hover:bg-primary-dark"
@@ -45,7 +51,7 @@ import ArrowIcon from './ArrowIcon.astro';
   </div>
 
   <!-- Round photo with a glass "Available for work" card -->
-  <div class="relative mx-auto w-full max-w-sm md:max-w-md">
+  <div data-intro="photo" class="relative mx-auto w-full max-w-sm md:max-w-md">
     <div class="aspect-square overflow-hidden rounded-full bg-linear-to-br from-surface to-surface-alt shadow-2xl shadow-primary/10">
       <Image
         src={portrait}
@@ -58,7 +64,10 @@ import ArrowIcon from './ArrowIcon.astro';
       />
     </div>
 
-    <div class="absolute right-0 -bottom-8 w-64 rounded-3xl border border-white/70 bg-white/70 p-5 shadow-xl backdrop-blur-xl sm:-right-6">
+    <div
+      data-glass
+      class="absolute right-0 -bottom-8 w-64 rounded-3xl border border-white/70 bg-white/70 p-5 shadow-xl backdrop-blur-xl sm:-right-6"
+    >
       <p class="flex items-center gap-2 text-sm font-semibold text-ink">
         <span aria-hidden="true" class="size-2 rounded-full bg-accent"></span>
         Available for work
