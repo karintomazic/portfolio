@@ -1,0 +1,13 @@
+---
+import Logo from './Logo.astro';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 pt-4 pb-10 text-sm text-ink-muted">
+  <a href="/" class="py-2">
+    <Logo class="text-lg" />
+    <span class="sr-only">, home</span>
+  </a>
+  <p>© {year} Karin Tomazic</p>
+</footer>

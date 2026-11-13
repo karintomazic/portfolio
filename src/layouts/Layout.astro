@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 
 interface Props {
   title: string;
@@ -20,16 +22,36 @@ const {
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title} | Karin Tomazic</title>
+    <!-- Runs before the page shows: lets the CSS know JavaScript works,
+         so scroll-reveal content is only hidden when it can be revealed -->
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
   </head>
-  <body class="min-h-screen bg-white text-neutral-900 antialiased">
+  <body class="min-h-screen bg-canvas font-sans text-ink antialiased">
+    <!-- Soft background glow: a light blue blob top right, a mint one bottom left -->
+    <div
+      aria-hidden="true"
+      class="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
+    >
+      <div class="absolute -top-40 -right-40 size-[44rem] rounded-full bg-decor/40 blur-3xl"></div>
+      <div class="absolute top-[60%] -left-60 size-[36rem] rounded-full bg-surface-alt blur-3xl"></div>
+    </div>
+
     <a
       href="#main"
-      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:rounded focus:bg-neutral-900 focus:px-4 focus:py-2 focus:text-white"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-canvas"
     >
       Skip to content
     </a>
+    <Header />
     <main id="main">
       <slot />
     </main>
+    <Footer />
+
+    <script>
+      import '../scripts/effects.ts';
+    </script>
   </body>
 </html>

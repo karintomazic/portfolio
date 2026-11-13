@@ -1,0 +1,14 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = 'text-2xl' } = Astro.props;
+
+// "KT." wordmark. The dot is decoration, so screen readers only hear "KT".
+// prettier-ignore keeps "KT" and the dot on one line: a line break between
+// them would show up as a space.
+---
+
+<!-- prettier-ignore -->
+<span class:list={['font-extrabold tracking-tight text-primary', className]}>KT<span aria-hidden="true" class="text-accent">.</span></span>

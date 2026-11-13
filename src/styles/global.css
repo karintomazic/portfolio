@@ -1,1 +1,143 @@
 @import 'tailwindcss';
+@import '@fontsource-variable/fraunces';
+@import '@fontsource-variable/dm-sans';
+
+@theme {
+  /* Fonts */
+  --font-serif: 'Fraunces Variable', Georgia, serif;
+  --font-sans: 'DM Sans Variable', system-ui, sans-serif;
+
+  /* Backgrounds */
+  --color-canvas: #f8f6f1; /* page background, also light text on dark blocks */
+  --color-surface: #e3ebf2; /* light blue panels */
+  --color-surface-alt: #e0efe9; /* mint panels and background glow */
+
+  /* Text: all pass WCAG AA (4.5:1) on canvas, surface and surface-alt */
+  --color-ink: #1c2433; /* main text: 14.4:1 on canvas */
+  --color-ink-muted: #4f5869; /* secondary text: 5.9:1 or more */
+  --color-primary: #24426b; /* navy: headings, links, buttons: 8.4:1 or more */
+  --color-primary-dark: #172d4a; /* hover states */
+  --color-accent: #1f6f6b; /* teal: eyebrows, labels: 4.9:1 or more */
+
+  /* Decoration only: never use for text */
+  --color-decor: #9fb8cf; /* borders and background glow */
+}
+
+@layer base {
+  /* Visible focus ring for keyboard users, on every interactive element */
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+
+  /* Leave space above sections when jumping to them with anchor links */
+  [id] {
+    scroll-margin-top: 2rem;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Motion. Everything in this block only runs for people who haven't
+   asked their system for reduced motion.
+   ------------------------------------------------------------------ */
+@keyframes intro-rise {
+  from {
+    opacity: 0;
+    translate: 0 24px;
+    filter: blur(6px);
+  }
+}
+
+@keyframes intro-pop {
+  from {
+    opacity: 0;
+    scale: 0.94;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Hero: pieces fade up one after another. --i sets the order. */
+  [data-intro] {
+    animation: intro-rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(var(--i, 0) * 120ms + 100ms);
+  }
+
+  [data-intro='photo'] {
+    animation-name: intro-pop;
+    animation-duration: 1.1s;
+    animation-delay: 300ms;
+  }
+
+  /* Sections glide up when they scroll into view. Only hidden when
+     JavaScript runs (.js), so the content never stays invisible. */
+  .js [data-reveal] {
+    opacity: 0;
+    translate: 0 40px;
+    transition:
+      opacity 0.8s ease,
+      translate 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: calc(var(--i, 0) * 110ms);
+  }
+
+  .js [data-reveal].is-visible {
+    opacity: 1;
+    translate: none;
+  }
+
+  /* Project cards tilt toward the cursor (the angle is set in JS) */
+  [data-tilt] {
+    transition:
+      transform 0.25s ease-out,
+      box-shadow 0.25s ease;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Glass that reacts: a light follows the cursor over the glass cards.
+   Only on devices with a real mouse, not touch screens.
+   ------------------------------------------------------------------ */
+@media (hover: hover) and (pointer: fine) {
+  [data-glass]::before,
+  [data-glass]::after {
+    content: '';
+    position: absolute;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  /* Soft white shine under the cursor */
+  [data-glass]::before {
+    inset: 0;
+    background: radial-gradient(
+      420px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+      rgb(255 255 255 / 0.9),
+      rgb(159 184 207 / 0.35) 30%,
+      transparent 60%
+    );
+    mix-blend-mode: soft-light;
+  }
+
+  /* Teal glowing border near the cursor. The mask cuts out the middle,
+     so only a 1.5px ring is left. */
+  [data-glass]::after {
+    inset: -1px;
+    padding: 1.5px;
+    background: radial-gradient(
+      260px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+      var(--color-accent),
+      var(--color-decor) 40%,
+      transparent 70%
+    );
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask-composite: exclude;
+  }
+
+  [data-glass]:hover::before,
+  [data-glass]:hover::after {
+    opacity: 1;
+  }
+}
