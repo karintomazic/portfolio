@@ -1,14 +1,20 @@
 ---
+import { getImage } from 'astro:assets';
+import signature from '../assets/logos/signature.png';
+
 interface Props {
   class?: string;
 }
 
-const { class: className = 'text-2xl' } = Astro.props;
+const { class: className = 'h-11' } = Astro.props;
 
-// "KT." wordmark. The dot is decoration, so screen readers only hear "KT".
-// prettier-ignore keeps "KT" and the dot on one line: a line break between
-// them would show up as a space.
+// Use the signature as a stencil (mask) and paint it with the brand colour.
+const img = await getImage({ src: signature, width: 400 });
 ---
 
-<!-- prettier-ignore -->
-<span class:list={['font-extrabold tracking-tight text-primary', className]}>KT<span aria-hidden="true" class="text-accent">.</span></span>
+<span
+  role="img"
+  aria-label="Karin Tomažič"
+  class:list={['block aspect-[1913/550] bg-primary', className]}
+  style={`mask: url(${img.src}) center / contain no-repeat; -webkit-mask: url(${img.src}) center / contain no-repeat;`}
+></span>
