@@ -1,0 +1,109 @@
+---
+// How I work page: numbered steps, then "What I do / What AI helps with".
+// The text lives in src/data/how-i-work.ts.
+import Layout from '../layouts/Layout.astro';
+import ContactCta from '../components/ContactCta.astro';
+import { intro, steps, aiDoes, iDo, closing } from '../data/how-i-work';
+---
+
+<Layout
+  title="How I work"
+  description="How Karin Tomazic works: planning, building with AI, testing, accessibility checks and teamwork."
+>
+  <section
+    aria-labelledby="page-heading"
+    class="mx-auto max-w-6xl px-4 pt-10 pb-24 md:pt-16"
+  >
+    <p
+      data-intro
+      style="--i: 0"
+      class="text-xs font-semibold tracking-[0.2em] text-accent uppercase"
+    >
+      Process
+    </p>
+    <!-- prettier-ignore -->
+    <h1 id="page-heading" data-intro style="--i: 1" class="mt-3 max-w-2xl font-serif text-5xl text-balance text-primary sm:text-6xl">How I work<span aria-hidden="true" class="text-accent">.</span></h1>
+    <p
+      data-intro
+      style="--i: 2"
+      class="mt-5 max-w-xl text-lg leading-relaxed text-ink-muted"
+    >
+      {intro}
+    </p>
+
+    <ol class="mt-16 border-t border-decor">
+      {steps.map((step, index) => (
+        <li
+          data-reveal
+          class="grid gap-4 border-b border-decor py-10 md:grid-cols-[14rem_1fr] md:gap-12"
+        >
+          <div>
+            <span aria-hidden="true" class="font-serif text-5xl text-decor">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <h2 class="mt-2 font-serif text-3xl text-primary">{step.title}</h2>
+          </div>
+          <div class="max-w-2xl">
+            <p class="text-lg font-medium text-ink">{step.summary}</p>
+            <ul class="mt-4 grid gap-3">
+              {step.points.map((point) => (
+                <li class="relative pl-6 leading-relaxed text-ink-muted">
+                  <span
+                    aria-hidden="true"
+                    class="absolute top-2.5 left-1 size-1.5 rounded-full bg-accent"
+                  />
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </li>
+      ))}
+    </ol>
+
+    <!-- Me vs AI -->
+    <div class="mt-20 grid gap-6 md:grid-cols-2">
+      <div
+        data-reveal
+        class="rounded-[2rem] bg-primary p-8 text-canvas sm:p-10"
+      >
+        <h2 class="font-serif text-2xl">What I do</h2>
+        <ul class="mt-6 grid gap-3">
+          {iDo.map((item) => (
+            <li class="flex gap-3">
+              <span aria-hidden="true">✓</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div
+        data-reveal
+        data-glass
+        style="--i: 1"
+        class="relative rounded-[2rem] border border-white/70 bg-white/60 p-8 backdrop-blur sm:p-10"
+      >
+        <h2 class="font-serif text-2xl text-primary">What AI helps with</h2>
+        <ul class="mt-6 grid gap-3 text-ink-muted">
+          {aiDoes.map((item) => (
+            <li class="flex gap-3">
+              <span aria-hidden="true" class="text-accent">
+                ✓
+              </span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <p
+      data-reveal
+      class="mx-auto mt-20 max-w-3xl text-center font-serif text-3xl leading-snug text-balance text-primary"
+    >
+      {closing}
+    </p>
+  </section>
+
+  <ContactCta />
+</Layout>
