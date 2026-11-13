@@ -30,9 +30,10 @@ const { Content } = await render(project);
 
 <Layout title={title} description={description}>
   <article class="mx-auto max-w-6xl px-4 pt-6 pb-24 md:pt-10">
+    <!-- Same style as "View all projects" on the home page, arrow pointing back -->
     <a
       href="/projects"
-      class="group inline-flex items-center gap-2 py-2 text-sm font-medium text-ink-muted transition-colors hover:text-primary"
+      class="group inline-flex items-center gap-2 py-2 font-medium text-primary underline-offset-8 hover:underline"
     >
       <ArrowIcon class="rotate-180 transition-transform motion-safe:group-hover:-translate-x-0.5" />
       All projects
