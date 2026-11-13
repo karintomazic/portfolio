@@ -28,9 +28,13 @@ import ArrowIcon from './ArrowIcon.astro';
       style="--i: 3"
       class="mt-5 max-w-md leading-relaxed text-ink-muted"
     >
-      I build accessible, well-tested web interfaces with React, Next.js and
-      TypeScript, and use AI coding agents to ship them faster without cutting
-      corners.
+      {/* {' '} keeps the space before each bold word: Astro drops a line break that comes right before a tag */}
+      I build accessible, well-tested web interfaces with{' '}
+      <strong class="font-semibold text-ink">React</strong>,{' '}
+      <strong class="font-semibold text-ink">Next.js</strong> and{' '}
+      <strong class="font-semibold text-ink">TypeScript</strong>, and use{' '}
+      <strong class="font-semibold text-ink">AI coding agents</strong> to ship
+      them faster without cutting corners.
     </p>
 
     <div data-intro style="--i: 4" class="mt-8 flex flex-wrap gap-3">
