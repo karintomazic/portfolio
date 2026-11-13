@@ -1,0 +1,175 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { Image } from 'astro:assets';
+import { render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import ArrowIcon from '../../components/ArrowIcon.astro';
+import SocialIcon from '../../components/SocialIcon.astro';
+import ContactCta from '../../components/ContactCta.astro';
+import { getPublishedProjects } from '../../data/projects';
+
+// Build one page per published project: /projects/tattoobyjs, ...
+export const getStaticPaths = (async () => {
+  const projects = await getPublishedProjects();
+  return projects.map((project, index) => ({
+    params: { slug: project.id },
+    props: {
+      project,
+      // The next project, going back to the first one after the last
+      next: projects[(index + 1) % projects.length],
+    },
+  }));
+}) satisfies GetStaticPaths;
+
+const { project, next } = Astro.props;
+const { title, description, badge, role, tags, cover, coverAlt, panel, links } =
+  project.data;
+// Turns the Markdown body into a component we can place on the page
+const { Content } = await render(project);
+---
+
+<Layout title={title} description={description}>
+  <article class="mx-auto max-w-6xl px-4 pt-6 pb-24 md:pt-10">
+    <a
+      href="/projects"
+      class="group inline-flex items-center gap-2 py-2 text-sm font-medium text-ink-muted transition-colors hover:text-primary"
+    >
+      <ArrowIcon class="rotate-180 transition-transform motion-safe:group-hover:-translate-x-0.5" />
+      All projects
+    </a>
+
+    <!-- Header: title and links on the left, project facts on the right -->
+    <header class="mt-8 grid gap-10 md:grid-cols-[1.5fr_1fr] md:items-end">
+      <div>
+        <p
+          data-intro
+          style="--i: 0"
+          class="text-xs font-semibold tracking-[0.2em] text-accent uppercase"
+        >
+          {badge}
+        </p>
+        <!-- prettier-ignore -->
+        <h1 data-intro style="--i: 1" class="mt-3 font-serif text-5xl text-balance text-primary sm:text-6xl">{title}<span aria-hidden="true" class="text-accent">.</span></h1>
+        <p
+          data-intro
+          style="--i: 2"
+          class="mt-5 max-w-xl text-lg leading-relaxed text-ink-muted"
+        >
+          {description}
+        </p>
+
+        {(links.live || links.github) && (
+          <ul data-intro style="--i: 3" class="mt-8 flex flex-wrap gap-3">
+            {links.live && (
+              <li>
+                <a
+                  href={links.live}
+                  class="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 font-medium text-canvas shadow-lg shadow-primary/20 transition-colors hover:bg-primary-dark"
+                >
+                  Visit live site
+                  <ArrowIcon
+                    direction="up-right"
+                    class="transition-transform motion-safe:group-hover:translate-x-0.5 motion-safe:group-hover:-translate-y-0.5"
+                  />
+                </a>
+              </li>
+            )}
+            {links.github && (
+              <li>
+                <a
+                  href={links.github}
+                  class="inline-flex items-center gap-2 rounded-full border border-decor bg-white/70 px-6 py-3.5 font-medium text-primary backdrop-blur transition-colors hover:border-primary"
+                >
+                  <SocialIcon name="github" class="size-[18px]" />
+                  View code
+                  <span class="sr-only">on GitHub</span>
+                </a>
+              </li>
+            )}
+          </ul>
+        )}
+      </div>
+
+      <!-- Project facts: a <dl> pairs each label with its value for screen readers -->
+      <dl
+        data-intro
+        data-glass
+        style="--i: 3"
+        class="relative space-y-5 rounded-3xl border border-white/70 bg-white/60 p-6 backdrop-blur"
+      >
+        {role && (
+          <div>
+            <dt class="text-xs font-semibold tracking-[0.2em] text-accent uppercase">
+              Role
+            </dt>
+            <dd class="mt-2 text-ink">{role}</dd>
+          </div>
+        )}
+        <div>
+          <dt class="text-xs font-semibold tracking-[0.2em] text-accent uppercase">
+            Stack
+          </dt>
+          <dd>
+            <ul class="mt-3 flex flex-wrap gap-2">
+              {tags.map((tag) => (
+                <li class="rounded-full border border-decor bg-white/70 px-3 py-1 text-sm text-primary">
+                  {tag}
+                </li>
+              ))}
+            </ul>
+          </dd>
+        </div>
+      </dl>
+    </header>
+
+    <!-- Big screenshot on a coloured panel -->
+    <div
+      data-intro="photo"
+      class:list={['mt-14 rounded-[2rem] p-4 sm:p-8 md:p-12', panel]}
+    >
+      <Image
+        src={cover}
+        alt={coverAlt}
+        widths={[600, 1000, 1400, 2000]}
+        sizes="(min-width: 1152px) 1056px, 92vw"
+        loading="eager"
+        fetchpriority="high"
+        class="w-full rounded-xl shadow-2xl shadow-primary/15"
+      />
+    </div>
+
+    <!-- The case study text from the Markdown file -->
+    <div data-reveal class="case-study mx-auto mt-16 max-w-3xl">
+      <Content />
+    </div>
+
+    <!-- Next project -->
+    {next.id !== project.id && (
+      <nav aria-label="Next project" class="mx-auto mt-20 max-w-3xl">
+        <a
+          href={`/projects/${next.id}`}
+          data-glass
+          data-reveal
+          class="group relative flex items-center justify-between gap-6 rounded-[2rem] border border-white/70 bg-white/60 p-6 backdrop-blur sm:p-8"
+        >
+          <span>
+            <span class="block text-xs font-semibold tracking-[0.2em] text-accent uppercase">
+              Next project
+            </span>
+            <span class="mt-2 block font-serif text-3xl text-primary">
+              {next.data.title}
+            </span>
+          </span>
+          <span
+            aria-hidden="true"
+            class="grid size-12 shrink-0 place-items-center rounded-full border border-decor text-primary transition-colors group-hover:border-primary group-hover:bg-primary group-hover:text-canvas"
+          >
+            <ArrowIcon />
+          </span>
+        </a>
+      </nav>
+    )}
+  </article>
+
+  <ContactCta />
+</Layout>
