@@ -1,0 +1,29 @@
+---
+interface Props {
+  /** 'right' for "go to" buttons, 'up-right' for links that open something */
+  direction?: 'right' | 'up-right' | 'down';
+  class?: string;
+}
+
+const { direction = 'right', class: className } = Astro.props;
+
+const paths: Record<NonNullable<Props['direction']>, string> = {
+  right: '<path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>',
+  'up-right': '<path d="M7 17 17 7"/><path d="M8 7h9v9"/>',
+  down: '<path d="M12 5v14"/><path d="m6 13 6 6 6-6"/>',
+};
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  focusable="false"
+  class:list={['size-4 shrink-0', className]}
+  set:html={paths[direction]}
+/>

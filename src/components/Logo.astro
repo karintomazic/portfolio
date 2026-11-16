@@ -1,0 +1,20 @@
+---
+import { getImage } from 'astro:assets';
+import signature from '../assets/logos/signature.png';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = 'h-11' } = Astro.props;
+
+// Use the signature as a stencil (mask) and paint it with the brand colour.
+const img = await getImage({ src: signature, width: 400 });
+---
+
+<span
+  role="img"
+  aria-label="Karin Tomažič"
+  class:list={['block aspect-[1913/550] bg-primary', className]}
+  style={`mask: url(${img.src}) center / contain no-repeat; -webkit-mask: url(${img.src}) center / contain no-repeat;`}
+></span>

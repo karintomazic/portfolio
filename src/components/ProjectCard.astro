@@ -1,0 +1,68 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import ArrowIcon from './ArrowIcon.astro';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  /** Heading level, so the card fits the page's heading order */
+  headingLevel?: 'h2' | 'h3';
+}
+
+const { project, headingLevel: Heading = 'h3' } = Astro.props;
+const { title, summary, cover, coverAlt, badge, panel, draft } = project.data;
+// Drafts have no page yet, so their card isn't a link
+const href = draft ? undefined : `/projects/${project.id}`;
+---
+
+<article
+  data-glass
+  data-tilt={href ? '' : undefined}
+  class:list={[
+    'group relative h-full rounded-[2rem] border border-white/70 bg-white/60 p-3 shadow-sm backdrop-blur has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-4 has-[a:focus-visible]:outline-primary',
+    href && 'hover:shadow-xl hover:shadow-primary/10',
+  ]}
+>
+  <div class:list={['relative rounded-[1.5rem] p-5', panel]}>
+    <Image
+      src={cover}
+      alt={coverAlt}
+      widths={[400, 800]}
+      sizes="(min-width: 768px) 320px, 90vw"
+      class:list={[
+        'aspect-[16/11] w-full rounded-xl object-cover object-top shadow-lg',
+        href &&
+          'motion-safe:transition-transform motion-safe:duration-300 motion-safe:group-hover:-translate-y-1',
+      ]}
+    />
+    <span class="absolute top-3 right-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-ink">
+      {badge}
+    </span>
+  </div>
+  <div class="flex items-center justify-between gap-4 p-4">
+    <div>
+      <Heading class="font-serif text-xl text-primary">
+        {href ? (
+          // Stretched link: its ::after covers the whole card, so the card is clickable
+          <a
+            href={href}
+            class="after:absolute after:inset-0 after:rounded-[2rem] focus-visible:outline-none"
+          >
+            {title}
+          </a>
+        ) : (
+          title
+        )}
+      </Heading>
+      <p class="text-sm text-ink-muted">{summary}</p>
+    </div>
+    {href && (
+      <span
+        aria-hidden="true"
+        class="grid size-10 shrink-0 place-items-center rounded-full border border-decor text-primary transition-colors group-hover:border-primary group-hover:bg-primary group-hover:text-canvas"
+      >
+        <ArrowIcon direction="up-right" />
+      </span>
+    )}
+  </div>
+</article>

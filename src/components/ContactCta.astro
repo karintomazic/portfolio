@@ -1,0 +1,55 @@
+---
+import { socialLinks } from '../data/navigation';
+import ArrowIcon from './ArrowIcon.astro';
+import SocialIcon from './SocialIcon.astro';
+
+// Email first, then LinkedIn and GitHub
+const order = ['mail', 'linkedin', 'github'];
+const links = [...socialLinks].sort(
+  (a, b) => order.indexOf(a.icon) - order.indexOf(b.icon),
+);
+---
+
+<section
+  id="contact"
+  aria-labelledby="contact-heading"
+  class="mx-auto max-w-6xl px-4 pb-10"
+>
+  <div
+    data-reveal
+    data-glass
+    class="relative grid items-center gap-8 rounded-[2rem] bg-primary p-8 text-canvas sm:p-10 md:grid-cols-[1.4fr_1fr]"
+  >
+    <h2 id="contact-heading" class="font-serif text-4xl text-balance">
+      Let's create something <em>amazing</em> together.
+    </h2>
+
+    <ul class="space-y-3 text-sm font-semibold">
+      {links.map((link) => {
+        const isEmail = link.icon === 'mail';
+        return (
+          <li>
+            <a
+              href={link.href}
+              class:list={[
+                'group flex items-center gap-3 rounded-2xl px-5 py-4 transition-colors',
+                isEmail
+                  ? 'bg-canvas text-primary hover:bg-white'
+                  : 'border border-canvas/40 hover:bg-canvas/10',
+              ]}
+            >
+              <SocialIcon name={link.icon} class="size-[18px]" />
+              <span class="min-w-0 break-all">
+                {isEmail ? link.href.replace('mailto:', '') : link.label}
+              </span>
+              <ArrowIcon
+                direction="up-right"
+                class="ml-auto transition-transform motion-safe:group-hover:translate-x-0.5 motion-safe:group-hover:-translate-y-0.5"
+              />
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</section>
