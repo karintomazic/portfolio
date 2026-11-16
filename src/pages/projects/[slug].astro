@@ -135,7 +135,10 @@ const { Content } = await render(project);
         sizes="(min-width: 1152px) 1056px, 92vw"
         loading="eager"
         fetchpriority="high"
-        class="w-full rounded-xl shadow-2xl shadow-primary/15"
+        class:list={[
+          'w-full rounded-xl shadow-2xl shadow-primary/15',
+          cover.height > cover.width && 'mx-auto max-w-sm',
+        ]}
       />
     </div>
 
