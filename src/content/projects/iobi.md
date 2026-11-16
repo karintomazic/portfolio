@@ -1,5 +1,5 @@
 ---
-title: iobi
+title: IOBI
 summary: Multilingual product catalogue
 description: Multilingual catalogue for a family business making handcrafted concrete garden products.
 badge: Coming soon
