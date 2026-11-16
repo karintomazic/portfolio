@@ -1,46 +1,49 @@
-# Astro Starter Kit: Basics
+# karintomazic.com
 
-```sh
-npm create astro@latest -- --template basics
+My portfolio site: who I am, how I work, and case studies of the projects I've built.
+
+**Live:** karintomazic.com (coming soon)
+
+## Tech stack
+
+- **Astro 7** with **TypeScript** (strict)
+- **Tailwind CSS v4**
+- **React** only for the interactive parts (Astro islands), so most pages ship no JavaScript
+- **Content collections:** each project is a Markdown file in `src/content/projects/`, and a schema checks its frontmatter at build time
+- **ESLint** (with `jsx-a11y`) and **Prettier**
+
+## Accessibility
+
+- Semantic HTML with a proper heading order and landmarks
+- Visible focus styles and full keyboard support
+- All animations respect `prefers-reduced-motion`
+
+## Project structure
+
+```
+src/
+├── content/projects/   # one Markdown file per project (case studies)
+├── content.config.ts   # schema for the project files
+├── data/               # text for the About and How I work pages
+├── components/         # Astro components (Hero, ProjectCard, …)
+├── pages/              # routes: /, /about, /how-i-work, /projects, /projects/[slug]
+├── scripts/effects.ts  # intro animation, scroll reveal, card tilt
+└── styles/global.css
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Run it locally
 
-## 🚀 Project Structure
+You need Node.js 22 or newer.
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```bash
+npm install
+npm run dev      # http://localhost:4321
+npm run build    # build the site into dist/
+npm run check    # TypeScript and Astro checks
+npm run lint
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+### Add a project
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Add a Markdown file to `src/content/projects/` and a screenshot to `src/assets/projects/`.
+Set `draft: true` to show the card without a case study page.
