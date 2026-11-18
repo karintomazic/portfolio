@@ -24,7 +24,7 @@ export const intro =
 export const facts: Fact[] = [
   { value: '7+', label: 'years building for the web' },
   { value: '5+', label: 'long-running client projects' },
-  { value: '2', label: 'own products with Next.js + PocketBase' },
+  { value: '3', label: 'Next.js projects live in production' },
   { value: 'Remote', label: 'from Maribor, Slovenia' },
 ];
 
